@@ -2,7 +2,6 @@
 #include <curl/curl.h>
 #include <string.h>
 #include <stdlib.h>
-#include "user_input.c"
 
 //return value of 'size_t' is byte, 'contents' holds data that recieve/arrives,'size' is size/byte taken by each element,'nmemb' is number of elements/member
 size_t write_callback(void *contents, size_t size, size_t nmemb, FILE *file) {
@@ -11,8 +10,7 @@ size_t write_callback(void *contents, size_t size, size_t nmemb, FILE *file) {
 
 
 int main(void)
-{  char *url = make_url(); 
-//    printf("%s",url);
+{   
 
   // Stores the CURL handle used to manage the request and easy API session
   CURL *curl;
@@ -35,8 +33,8 @@ int main(void)
   // curl_easy_setopt() is used to set the options for the request, we MUST set
   // the CURLOPT_URL, i.e. where the request will be to, and we setup a request
   // to google.com.
-  curl_easy_setopt(curl, CURLOPT_URL, url);
-//curl_easy_setopt(curl, CURLOPT_URL, "https://api.openweathermap.org/data/2.5/weather?q=Islamabad&appid=38ae9bcfd18b0c93ce389640e87d7e59");
+
+ curl_easy_setopt(curl, CURLOPT_URL, "https://api.openweathermap.org/data/2.5/weather?q=karachi&appid=38ae9bcfd18b0c93ce389640e87d7e59");
 
 // Open a file for writing
     file = fopen("response.txt", "ab");
