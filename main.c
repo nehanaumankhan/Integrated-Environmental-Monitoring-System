@@ -11,7 +11,7 @@ size_t write_callback(void *contents, size_t size, size_t nmemb, FILE *file) {
 
 int main(void)
 {   
-
+  FILE *file;
   // Stores the CURL handle used to manage the request and easy API session
   CURL *curl;
 
