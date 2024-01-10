@@ -103,20 +103,17 @@ void processWeatherData(const char *response, const char *processedDataFile) {
 //main function
 
 int main(void) {
-
+    // code for data retrieval; retrieved data is stored in respose.txt(raw data) file; retrived data is sent to processWeatherData to process it 
     CURL *curl;
     CURLcode result;
     FILE *file;
     char *response=NULL;
-    
     curl = curl_easy_init();
     if (curl == NULL) {
         fprintf(stderr, "HTTP request failed\n");
         return -1;
     }
-
     curl_easy_setopt(curl, CURLOPT_URL, "https://api.openweathermap.org/data/2.5/weather?q=Karachi&appid=38ae9bcfd18b0c93ce389640e87d7e59");
-
     // Open a file for writing
     file = fopen("response.txt", "ab");
     if (file == NULL) {
@@ -124,7 +121,6 @@ int main(void) {
         curl_easy_cleanup(curl);
         return -1;
     }
-
     // Set the write callback function to write to the file
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
     // curl_easy_setopt(curl, CURLOPT_WRITEDATA, file);
@@ -135,15 +131,11 @@ int main(void) {
         fprintf(stderr, "Error: %s\n", curl_easy_strerror(result));
     }
     fprintf(file,"%s",response);    
-
     // Clean up and free resources
     fprintf(file,"\n");
     fclose(file);
     // processWeatherData(response, "processed_data.txt");
     processWeatherData(response, "process.csv");
-
     curl_easy_cleanup(curl);
-
-
     return 0;
 }
