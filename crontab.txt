@@ -24,7 +24,8 @@
 45 8 * * * cd /home/ayesha/Desktop/Ayesha/CEW && gcc new.c -o p -lcurl cJSON/cJSON.c && ./p /home/ayesha/Desktop/Ayesha/CEW/logfile.log 2>&1
 
 #after including header files
-##45 8 * * * cd /home/ayesha/Desktop/Ayesha/CEW && gcc main.c -o environmental_monitoring -lcurl cJSON/cJSON.c && ./environmental_monitoring /home/ayesha/Desktop/Ayesha/CEW/logfile.log 2>&1
+0 17,18 * * * cd /home/ayesha/Desktop/Ayesha/CEW && make -f Makefile &&./my_program /home/ayesha/Desktop/Ayesha/CEW/error.log 2>&1
+3 11 * * 6 /home/ayesha/Desktop/Ayesha/CEW/WeatherReport.sh
 
 #This command compiles only main.c into an executable named environmental_monitoring. The necessary declarations from weather.h are used, and the actual definitions from weather.c will be linked later during the final compilation process.
 
