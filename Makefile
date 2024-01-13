@@ -8,7 +8,7 @@ CFLAGS = -Wall
 LIBS = -lcurl
 
 # Source files
-SRCS = updated_cew.c fetchData.c processData.c logFile.c anomaly.c anomaly_error.c cJSON/cJSON.c
+SRCS = new.c fetchData.c processData.c logFile.c anomaly.c anomaly_error.c cJSON/cJSON.c
 
 # Object files
 OBJS = $(SRCS:.c=.o)
