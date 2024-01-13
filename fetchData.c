@@ -6,7 +6,7 @@
 #include "logFile.h"
 
 #define MAX_LINES 30
-#define MAX_BUFFER_SIZE 256
+#define MAX_BUFFER_SIZE 1024
 
 // Callback function for writing received data
 size_t write_callback(void *contents, size_t size, size_t nmemb, char **output) {
@@ -25,12 +25,6 @@ size_t write_callback(void *contents, size_t size, size_t nmemb, char **output) 
 
     return realsize;
 }
-
-// Struct to store weather data
-struct WeatherData {
-    double humidity;
-    double pressure;
-};
 
 // Function to perform HTTP request and save response to a file
 char *perform_http_request(const char *output_filename) {
@@ -97,15 +91,15 @@ char *perform_http_request(const char *output_filename) {
         }
 
         fclose(tempFile);
-        remove("response_copy.txt");
-        rename("temp.txt", "response_copy.txt");
+        remove(output_filename);
+        rename("temp.txt", output_filename);
 
         // Truncate the original file
         // freopen("response_copy.txt", "w", file);
         // file = fopen("response_copy.txt", "a");
 
         // Append the new response to the file
-        file = fopen("response_copy.txt", "a");
+        file = fopen(output_filename, "a");
         if (file == NULL) {
             perror("Error reopening file for reading and writing");
             exit(EXIT_FAILURE);
