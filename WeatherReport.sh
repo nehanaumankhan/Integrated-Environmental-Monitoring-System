@@ -37,13 +37,13 @@ EOL
 gnuplot $gnuplot_script
 
 # Send email with the .png report as an attachment
-to_email="ayeshaahmed45678@gmail.com"
+to_email="<Email>@gmail.com"
 subject="Weather Report"
 body="Please find the attached weather report of Pressure and humidty for $city."
 ATTACHMENT_FILE=$output_file
 
 # Use the sendemail command to send the email with the PDF attachment
-sendemail -f "ayeshaahmed45678@gmail.com" -t "$to_email" -u "$subject" -m "$body" -a "$ATTACHMENT_FILE" -s "smtp.gmail.com:587" -o tls=yes -xu "ayeshaahmed45678@gmail.com" -xp "<Password>"
+sendemail -f "<Email>@gmail.com" -t "$to_email" -u "$subject" -m "$body" -a "$ATTACHMENT_FILE" -s "smtp.gmail.com:587" -o tls=yes -xu "<Email>@gmail.com" -xp "<Password>"
 
 # Remove the temporary PDF file
 rm "$output_file"
